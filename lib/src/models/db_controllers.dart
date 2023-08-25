@@ -27,16 +27,19 @@ class AuthService {
       for (var student in students) {
         if (student['email'] == email) profile = student;
       }
+      profile = {"status": false};
     } else if (checkSupRole(email)) {
       // check supervisors
       for (var sup in supervisors) {
         if (sup['email'] == email) profile = sup;
       }
-    } 
+      profile = {"status": false};
+    } else
+      profile = {"status": false};
     return profile;
   }
 
   static Map<String, dynamic> register() {
-    return{};
+    return {};
   }
 }
