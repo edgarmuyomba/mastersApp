@@ -1,8 +1,9 @@
+import "package:masters_pms/src/models/models.dart";
 import "../db/documents.dart";
 import "../db/students.dart";
 import "../db/feedback.dart";
 import "../db/supervisors.dart";
-import "../db/tags.dart";
+import '../db/tags.dart';
 import "../db/topics.dart";
 
 class AuthService {
@@ -20,26 +21,91 @@ class AuthService {
     var students = Students;
     var supervisors = Supervisors;
 
-    var profile;
+    var account = {
+      'status': false,
+      'profile': {}
+      };
 
     if (checkStdRole(email)) {
       // check students
       for (var student in students) {
-        if (student['email'] == email) profile = student;
+        if (student['email'] == email) {
+          account = {
+            'status': true,
+            'profile': student
+          };
+        };
       }
-      profile = {"status": false};
     } else if (checkSupRole(email)) {
       // check supervisors
       for (var sup in supervisors) {
-        if (sup['email'] == email) profile = sup;
+        if (sup['email'] == email) {
+          account = {
+            'status': true,
+            'profile': sup
+          };
+        };
       }
-      profile = {"status": false};
-    } else
-      profile = {"status": false};
-    return profile;
+    }
+    return account;
   }
 
-  static Map<String, dynamic> register() {
+  Map<String, dynamic> register() {
     return {};
+  }
+
+  List<String> fetchSupNames() {
+    List<String> sups = [];
+    for (var sup in Supervisors) {
+      sups.add("${sup['first_name']} ${sup['last_name']}");
+    }
+    return sups;
+  }
+
+  int fetchSupId(String name) {
+    for (var sup in Supervisors) {
+      var _names = name.split(' ');
+      if (sup['first_name'] == _names[0] && sup['last_name'] == _names[1]) return int.parse(sup['id'].toString());
+    }
+    return 0;
+  }
+}
+
+class TopicService {
+  static void saveTopic(Topic topic) {
+    Topics.add({
+      "id": topic.id,
+      "title": topic.title,
+      "tags": topic.theme,
+      "student": topic.student,
+      "supervisor": topic.supervisor,
+      "plan": topic.plan,
+    });
+  }
+}
+
+class TagService {
+  List<Tag> fetchTags() {
+    List<Tag> tags = [];
+    for (var tag in Tags) {
+      tags.add(Tag.fromMap(tag));
+    }
+    return tags;
+  }
+
+  List<String> fetchTagNames() {
+    List<String> tags = [];
+    for (var tag in fetchTags()) {
+      tags.add(tag.name);
+    }
+    return tags;
+  }
+
+  int get_tag_id(String title) {
+    for (var tag in Tags) {
+      var _tag = Tag.fromMap(tag);
+      if (tag['name'] == title) return _tag.id;
+    }
+    return 0;
   }
 }

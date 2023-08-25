@@ -1,4 +1,4 @@
-var tags = [
+List<Map<String, dynamic>> Tags = [
     {
         "id": 639398,
         "name": "Machine Learning Algorithms",

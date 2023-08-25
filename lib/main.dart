@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:masters_pms/src/presentation/auth/login.dart';
+import 'package:masters_pms/src/presentation/student/createTopic.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +18,9 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Masters Supervision',
+      debugShowCheckedModeBanner: false,
       home: login()
+      // home: createTopic()
     );
   }
 }

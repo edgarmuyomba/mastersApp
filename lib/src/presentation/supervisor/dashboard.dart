@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class supDashboard extends StatefulWidget {
-  const supDashboard({super.key});
+  final Map<String, dynamic> profile;
+  const supDashboard({super.key, required this.profile});
 
   @override
   State<supDashboard> createState() => _supDashboardState();
