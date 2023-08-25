@@ -5,6 +5,7 @@ import "../db/feedback.dart";
 import "../db/supervisors.dart";
 import '../db/tags.dart';
 import "../db/topics.dart";
+import "../db/tasks.dart";
 
 class AuthService {
   bool checkStdRole(email) {
@@ -112,5 +113,28 @@ class TagService {
       if (tag['name'] == title) return _tag.id;
     }
     return 0;
+  }
+}
+
+class TaskService {
+  int topic;
+
+  TaskService({
+    required this.topic
+  });
+
+  Map<String, dynamic> fetchTasks() {
+    Map<String, dynamic> tasks = 
+      {
+        'Research': [],
+        'Proposal': [],
+        'Review': []
+      };
+
+    for (var task in Tasks) {
+      var _task = Task.fromMap(task);
+      tasks[_task.stage].add(_task);
+    }
+    return tasks;
   }
 }

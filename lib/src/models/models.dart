@@ -60,3 +60,35 @@ class Tag {
     );
   }
 }
+
+class Task{
+  int id;
+  String title;
+  String due_date;
+  int student;
+  String status;
+  int topic;
+  String stage;
+
+  Task({
+    required this.id,
+    required this.title,
+    required this.due_date,
+    required this.student,
+    required this.status,
+    required this.topic,
+    required this.stage,
+  });
+
+  factory Task.fromMap(Map<String, dynamic> task) {
+    return Task(
+      id: task['id'],
+      title: task['title'],
+      due_date: task['due_date'],
+      student: task['student'],
+      status: task['status'],
+      topic: task['topic'],
+      stage: task['stage']
+    );
+  }
+}
