@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:masters_pms/src/models/db_controllers.dart';
 import 'package:masters_pms/src/models/models.dart';
 import 'package:masters_pms/src/presentation/student/dashboard.dart';
+import 'package:masters_pms/src/utils/get_id.dart';
 
 class createTopic extends StatefulWidget {
   final Map<String, dynamic> profile;
@@ -39,11 +40,14 @@ class _createTopicState extends State<createTopic> {
 
   void saveTopic(newTopic) {
     Topic _newTopic = Topic(
+      id: get_id(),
       title: newTopic['title'],
       theme: _tagService.get_tag_id(newTopic['theme']),
       supervisor: _authService.fetchSupId(newTopic['supervisor']),
       student: widget.profile['id'],
       plan: newTopic['plan'],
+      stage: "Proposal",
+      completion: 0
     );
     TopicService.saveTopic(_newTopic);
     widget.profile['topic'] = _newTopic.id;

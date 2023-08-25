@@ -82,6 +82,11 @@ class TopicService {
       "plan": topic.plan,
     });
   }
+  static fetchTopic(int id) {
+    for (var topic in Topics) {
+      if (topic['id'] == id) return Topic.fromMap(topic);
+    }
+  }
 }
 
 class TagService {
