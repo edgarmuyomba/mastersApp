@@ -25,7 +25,7 @@ class _stdDashboardState extends State<stdDashboard>
 
   void makeSub(task) {
     setState(() {
-      viewTasks = false;
+      viewTasks = !viewTasks;
       submitTask = task;
     });
   }
@@ -45,8 +45,7 @@ class _stdDashboardState extends State<stdDashboard>
     DateTime currentDate = DateTime.now();
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 232, 232, 232),
-      body: SingleChildScrollView(
-        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      body:  Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Card(
             margin: EdgeInsets.all(0),
             color: Color.fromARGB(255, 37, 50, 56),
@@ -231,7 +230,6 @@ class _stdDashboardState extends State<stdDashboard>
             child: makeSubmission(task: submitTask)
             )
         ]),
-      ),
     );
   }
 }

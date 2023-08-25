@@ -22,30 +22,23 @@ class AuthService {
     var students = Students;
     var supervisors = Supervisors;
 
-    var account = {
-      'status': false,
-      'profile': {}
-      };
+    var account = {'status': false, 'profile': {}};
 
     if (checkStdRole(email)) {
       // check students
       for (var student in students) {
         if (student['email'] == email) {
-          account = {
-            'status': true,
-            'profile': student
-          };
-        };
+          account = {'status': true, 'profile': student};
+        }
+        ;
       }
     } else if (checkSupRole(email)) {
       // check supervisors
       for (var sup in supervisors) {
         if (sup['email'] == email) {
-          account = {
-            'status': true,
-            'profile': sup
-          };
-        };
+          account = {'status': true, 'profile': sup};
+        }
+        ;
       }
     }
     return account;
@@ -66,9 +59,16 @@ class AuthService {
   int fetchSupId(String name) {
     for (var sup in Supervisors) {
       var _names = name.split(' ');
-      if (sup['first_name'] == _names[0] && sup['last_name'] == _names[1]) return int.parse(sup['id'].toString());
+      if (sup['first_name'] == _names[0] && sup['last_name'] == _names[1])
+        return int.parse(sup['id'].toString());
     }
     return 0;
+  }
+
+  static getSup(int id) {
+    for (var sup in Supervisors) {
+      if (sup['id'] == id) return Supervisor.fromMap(sup);
+    }
   }
 }
 
@@ -83,6 +83,7 @@ class TopicService {
       "plan": topic.plan,
     });
   }
+
   static fetchTopic(int id) {
     for (var topic in Topics) {
       if (topic['id'] == id) return Topic.fromMap(topic);
@@ -119,22 +120,25 @@ class TagService {
 class TaskService {
   int topic;
 
-  TaskService({
-    required this.topic
-  });
+  TaskService({required this.topic});
 
   Map<String, dynamic> fetchTasks() {
-    Map<String, dynamic> tasks = 
-      {
-        'Research': [],
-        'Proposal': [],
-        'Review': []
-      };
+    Map<String, dynamic> tasks = {'Research': [], 'Proposal': [], 'Review': []};
 
     for (var task in Tasks) {
       var _task = Task.fromMap(task);
       tasks[_task.stage].add(_task);
     }
     return tasks;
+  }
+}
+
+class FeedService {
+  static List<Feed> fetchFeeds(int id) {
+    List<Feed> feeds = [];
+    for (var feed in Feedback) {
+      if (feed['task'] == id) feeds.add(Feed.fromMap(feed));
+    }
+    return feeds;
   }
 }

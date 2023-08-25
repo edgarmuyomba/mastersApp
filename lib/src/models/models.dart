@@ -92,3 +92,78 @@ class Task{
     );
   }
 }
+
+class Supervisor {
+  int id;
+  String first_name;
+  String last_name;
+  String contact;
+  String bio_data;
+  String username;
+  String email;
+  Map<String, dynamic> educ_bg;
+  List<int> expertise;
+  List<int> interests;
+  // List<int> assignments;
+  List<int> former_students;
+
+  Supervisor({
+    required this.id,
+    required this.first_name,
+    required this.last_name,
+    required this.contact,
+    required this.bio_data,
+    required this.username,
+    required this.email,
+    required this.educ_bg,
+    required this.expertise,
+    required this.interests,
+    // required this.assignments,
+    required this.former_students,
+  });
+
+  factory Supervisor.fromMap(Map<String, dynamic> sup) {
+    return Supervisor(
+      id: sup['id'], 
+      first_name: sup['first_name'], 
+      last_name: sup['last_name'], 
+      contact: sup['contact'], 
+      bio_data: sup['bio_data'], 
+      username: sup['username'], 
+      email: sup['email'], 
+      educ_bg: sup['educ_bg'], 
+      expertise: sup['expertise'], 
+      interests: sup['interests'], 
+      // assignments: sup['assignments'], 
+      former_students: sup['former_students']);
+  }
+}
+
+class Feed {
+  int id;
+  String title;
+  String content;
+  int supervisor;
+  int task;
+  String timestamp;
+
+  Feed({
+    required this.id,
+    required this.title,
+    required this.content,
+    required this.supervisor,
+    required this.task,
+    required this.timestamp,
+  });
+
+  factory Feed.fromMap(Map<String, dynamic> feedback) {
+    return Feed(
+      id: feedback['id'],
+      title: feedback['title'],
+      content: feedback['content'],
+      supervisor: feedback['supervisor'],
+      task: feedback['task'],
+      timestamp: feedback['timestamp'],
+    );
+  }
+}

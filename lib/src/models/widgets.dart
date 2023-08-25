@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:masters_pms/src/models/db_controllers.dart';
 import 'package:masters_pms/src/models/models.dart';
 
 Color getColor(String status) {
@@ -59,6 +60,62 @@ class taskCard extends StatelessWidget {
           )
         ],
       ),
+    );
+  }
+}
+
+class feedCard extends StatelessWidget {
+  final Feed feed;
+  const feedCard({super.key, required this.feed});
+
+  @override
+  Widget build(BuildContext context) {
+    Supervisor _super = AuthService.getSup(feed.supervisor);
+    return Column(
+      children: [
+        Container(
+          decoration: BoxDecoration(
+            color: Color.fromARGB(255, 236, 236, 236),
+            borderRadius: BorderRadius.circular(25),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  feed.title,
+                  style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 17
+                  ),
+                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "${_super.first_name} ${_super.last_name}",
+                      style: TextStyle(
+                        fontSize: 13,
+                        color: Colors.grey,
+                      )
+                      ),
+                    Text(
+                      feed.timestamp,
+                      style: TextStyle(
+                        fontSize: 13,
+                        color: Colors.grey,
+                      )),
+                  ],
+                ),
+                Divider(thickness: 0.5, color: Colors.black),
+                Text(feed.content),
+              ],
+            ),
+          )
+        ),
+        SizedBox(height: 10)
+      ],
     );
   }
 }

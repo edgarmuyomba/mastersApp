@@ -24,6 +24,7 @@ class _loginState extends State<login> {
   }
 
   void logIn() {
+    FocusScope.of(context).unfocus();
     setState(() {
       isLoading = true;
     });

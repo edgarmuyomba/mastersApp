@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:masters_pms/src/models/db_controllers.dart';
 import 'package:masters_pms/src/models/models.dart';
+import 'package:masters_pms/src/models/widgets.dart';
 
 class makeSubmission extends StatefulWidget {
   final Task task;
@@ -15,12 +17,14 @@ class _makeSubmissionState extends State<makeSubmission>
   TextEditingController _comment = TextEditingController();
 
   late TabController _tabController;
+  late List<Feed> feeds;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     _tabController = TabController(length: 2, vsync: this);
+    feeds = FeedService.fetchFeeds(widget.task.id);
   }
 
   @override
@@ -28,7 +32,7 @@ class _makeSubmissionState extends State<makeSubmission>
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Container(
-        height: 400,
+        height: 500,
         decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.all(Radius.circular(25))),
@@ -58,7 +62,6 @@ class _makeSubmissionState extends State<makeSubmission>
                 child: TabBarView(
                   controller: _tabController,
                   children: [
-
                   ListView(children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -93,7 +96,7 @@ class _makeSubmissionState extends State<makeSubmission>
                           children: [
                             TextFormField(
                               controller: _comment,
-                              maxLines: 5,
+                              maxLines: 10,
                               decoration: InputDecoration(
                                   labelText: "Comment",
                                   hintText: "Write a comment",
@@ -129,11 +132,12 @@ class _makeSubmissionState extends State<makeSubmission>
                           ],
                         ))
                   ]),
-                  ListView(
-                    children: [
-                      Container()
-                    ],
-                  )
+                  ListView.builder(
+                    itemCount: feeds.length,
+                    itemBuilder: (context, index) {
+                      return feedCard(feed: feeds[index]);
+                    }
+                    )
                   ]
                 ),
               )
