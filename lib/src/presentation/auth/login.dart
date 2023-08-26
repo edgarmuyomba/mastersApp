@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:masters_pms/src/presentation/student/createTopic.dart';
 import 'package:masters_pms/src/presentation/student/dashboard.dart';
+import 'package:masters_pms/src/presentation/student/home.dart';
 import 'package:masters_pms/src/presentation/student/noTopic.dart';
 import 'package:masters_pms/src/presentation/supervisor/dashboard.dart';
 import '../../models/db_controllers.dart';
@@ -29,7 +30,7 @@ class _loginState extends State<login> {
       Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (context) => stdDashboard(profile: account['profile'])));
+              builder: (context) => stdHome(profile: account['profile'])));
   }
 
   void logIn() {

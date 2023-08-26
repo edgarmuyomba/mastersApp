@@ -3,6 +3,7 @@ import 'package:masters_pms/src/models/db_controllers.dart';
 import 'package:masters_pms/src/models/models.dart';
 import 'package:masters_pms/src/models/widgets.dart';
 import 'package:masters_pms/src/presentation/student/dashboard.dart';
+import 'package:masters_pms/src/presentation/student/home.dart';
 
 class submissions extends StatefulWidget {
   final Task task;
@@ -42,7 +43,7 @@ class _submissionsState extends State<submissions> {
                       IconButton(
                         onPressed: () {
                           var profile = AuthService.getStd(widget.task.student);
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => stdDashboard(profile: profile)));
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => stdHome(profile: profile)));
                         }, 
                         icon: Icon(Icons.arrow_back_ios, color: Colors.white),
                         ),

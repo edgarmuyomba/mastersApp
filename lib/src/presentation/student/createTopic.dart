@@ -4,6 +4,7 @@ import 'package:masters_pms/src/db/topics.dart';
 import 'package:masters_pms/src/models/db_controllers.dart';
 import 'package:masters_pms/src/models/models.dart';
 import 'package:masters_pms/src/presentation/student/dashboard.dart';
+import 'package:masters_pms/src/presentation/student/home.dart';
 import 'package:masters_pms/src/utils/get_id.dart';
 
 class createTopic extends StatefulWidget {
@@ -232,7 +233,7 @@ class _createTopicState extends State<createTopic> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => stdDashboard(
+                                        builder: (context) => stdHome(
                                             profile: widget.profile)));
                               },
                               child: Container(

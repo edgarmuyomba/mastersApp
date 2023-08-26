@@ -43,9 +43,9 @@ class _stdDashboardState extends State<stdDashboard>
   @override
   Widget build(BuildContext context) {
     DateTime currentDate = DateTime.now();
-    return Scaffold(
-      backgroundColor: Color.fromARGB(255, 232, 232, 232),
-      body:  Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+    return Column(
+        crossAxisAlignment: CrossAxisAlignment.start, 
+        children: [
           Card(
             margin: EdgeInsets.all(0),
             color: Color.fromARGB(255, 37, 50, 56),
@@ -229,7 +229,8 @@ class _stdDashboardState extends State<stdDashboard>
             visible: !viewTasks, 
             child: makeSubmission(task: submitTask)
             )
-        ]),
-    );
+        ])
+    
+    ;
   }
 }
