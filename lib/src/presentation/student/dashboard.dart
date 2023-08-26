@@ -60,13 +60,13 @@ class _stdDashboardState extends State<stdDashboard>
                   children: [
                     SizedBox(height: 70),
                     Row(
-                      // top icons
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        IconButton(
-                            onPressed: () => Navigator.pop(context),
-                            icon:
-                                Icon(Icons.arrow_back_ios, color: Colors.white)),
+
+                        // IconButton(
+                        //     onPressed: () => Navigator.pop(context),
+                        //     icon:
+                        //         Icon(Icons.arrow_back_ios, color: Colors.white)),
+                        Expanded(child: SizedBox()),
                         Row(
                           children: [
                             Icon(Icons.camera_alt_outlined, color: Colors.white),

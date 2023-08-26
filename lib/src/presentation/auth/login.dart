@@ -20,12 +20,12 @@ class _loginState extends State<login> {
 
   void handleStdNav(account) {
     if (account['profile']['topic'] == '')
-      Navigator.push(
+      Navigator.pushReplacement(
           context,
           MaterialPageRoute(
               builder: (context) => noTopic(profile: account['profile'])));
     else
-      Navigator.push(
+      Navigator.pushReplacement(
           context,
           MaterialPageRoute(
               builder: (context) => stdHome(profile: account['profile'])));
@@ -37,7 +37,7 @@ class _loginState extends State<login> {
       isLoading = true;
     });
     AuthService _auth = AuthService();
-    Map<String, dynamic> account = _auth.login(_email.text);
+    Map<String, dynamic> account = _auth.login(_email.text.trim());
 
     if (!account['status']) {
       setState(() {

@@ -372,6 +372,6 @@ var Students = [
             "date": "1991-09-20",
             "desc": "Finally technology light meeting threat sing room often stop staff movement safe.Good top create find season work scientist."
         },
-        "topic": 671049
+        "topic": ''
     }
 ];
