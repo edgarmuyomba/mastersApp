@@ -69,6 +69,7 @@ class Task{
   String status;
   int topic;
   String stage;
+  String time;
 
   Task({
     required this.id,
@@ -78,6 +79,7 @@ class Task{
     required this.status,
     required this.topic,
     required this.stage,
+    required this.time,
   });
 
   factory Task.fromMap(Map<String, dynamic> task) {
@@ -88,7 +90,8 @@ class Task{
       student: task['student'],
       status: task['status'],
       topic: task['topic'],
-      stage: task['stage']
+      stage: task['stage'],
+      time: task['time']
     );
   }
 }

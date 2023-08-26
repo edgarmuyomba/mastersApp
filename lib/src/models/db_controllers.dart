@@ -137,6 +137,16 @@ class TaskService {
     }
     return tasks;
   }
+
+  static List<Task> fetchFreeTasks(stage) {
+    List<Task> tasks = [];
+
+    for (var task in Tasks) {
+      var _task = Task.fromMap(task);
+      if (_task.stage == stage) tasks.add(_task);
+    }
+    return tasks;
+  }
 }
 
 class FeedService {

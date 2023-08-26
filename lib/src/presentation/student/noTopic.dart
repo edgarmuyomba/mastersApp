@@ -66,7 +66,7 @@ class _noTopicState extends State<noTopic> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "Topic",
+                        "Title",
                         style: TextStyle(
                             fontWeight: FontWeight.w700, fontSize: 24
                         )
@@ -102,7 +102,7 @@ class _noTopicState extends State<noTopic> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "No Topic",
+                      "No Title",
                       style: TextStyle(
                         color: Color.fromARGB(255, 38, 50, 56),
                         fontWeight: FontWeight.w600,
@@ -115,7 +115,7 @@ class _noTopicState extends State<noTopic> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "Add a topic by clicking the 'Add Button'",
+                      "Add a title by clicking the 'Add Button'",
                       style: TextStyle(
                         color: Colors.grey,
                         fontSize: 13
