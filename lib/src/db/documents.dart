@@ -2,7 +2,7 @@ var Documents = [
   {
     "id": 422260,
     "title": "Arm soldier itself.",
-    "file": "../..",
+    "file": "../..", 
     "submission_date": "1971-12-21 08:57:54",
     "task": 567697
   },
