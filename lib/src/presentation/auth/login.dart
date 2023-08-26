@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:masters_pms/src/presentation/student/createTopic.dart';
-import 'package:masters_pms/src/presentation/student/dashboard.dart';
 import 'package:masters_pms/src/presentation/student/home.dart';
 import 'package:masters_pms/src/presentation/student/noTopic.dart';
 import 'package:masters_pms/src/presentation/supervisor/dashboard.dart';

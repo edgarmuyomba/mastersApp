@@ -21,7 +21,7 @@ class _stdHomeState extends State<stdHome> {
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> pages = [stdDashboard(profile: widget.profile), calendar(), profile()];
+    List<Widget> pages = [stdDashboard(profile: widget.profile), calendar(), profile(account: widget.profile)];
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 232, 232, 232),
       body: pages.elementAt(_selectedIndex),

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:masters_pms/src/models/db_controllers.dart';
 import 'package:masters_pms/src/models/models.dart';
 import 'package:masters_pms/src/models/widgets.dart';
-import 'package:masters_pms/src/presentation/student/dashboard.dart';
 import 'package:masters_pms/src/presentation/student/home.dart';
 
 class submissions extends StatefulWidget {

@@ -1,11 +1,8 @@
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:masters_pms/src/db/topics.dart';
 import 'package:masters_pms/src/models/db_controllers.dart';
 import 'package:masters_pms/src/models/models.dart';
-import 'package:masters_pms/src/presentation/student/dashboard.dart';
 import 'package:masters_pms/src/presentation/student/home.dart';
-import 'package:masters_pms/src/utils/get_id.dart';
 
 class createTopic extends StatefulWidget {
   final Map<String, dynamic> profile;
