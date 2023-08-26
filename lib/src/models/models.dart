@@ -1,34 +1,34 @@
 import '../utils/get_id.dart';
 
 class Topic {
-  int id;
+  int id = get_id();
   String title;
   int theme;
   int student;
   int supervisor = 0;
-  String stage;
-  int completion;
+  String stage = "Proposal";
+  int completion = 0;
   String plan;
 
   Topic({
-    required this.id,
+    // required this.id,
     required this.title,
     required this.theme,
     required this.student,
-    required this.stage,
-    required this.completion,
+    // required this.stage,
+    // required this.completion,
     required this.plan,
     required this.supervisor,
   });
 
   factory Topic.fromMap(Map<String, dynamic> topic) {
     return Topic(
-      id: topic['id'],
+      // id: topic['id'],
       title: topic['title'],
       theme: topic['tags'],
       student: topic['student'],
-      stage: topic['stage'],
-      completion: topic['completion'],
+      // stage: topic['stage'],
+      // completion: topic['completion'],
       plan: topic['plan'],
       supervisor: topic['supervisor']
     );
@@ -165,5 +165,66 @@ class Feed {
       task: feedback['task'],
       timestamp: feedback['timestamp'],
     );
+  }
+}
+
+class Document {
+  int id;
+  String title;
+  String file;
+  String submission_date;
+  int task;
+
+  Document({
+    required this.id,
+    required this.title,
+    required this.file,
+    required this.submission_date,
+    required this.task
+  });
+
+  factory Document.fromMap(Map<String, dynamic> doc) {
+    return Document(
+      id: doc['id'],
+      title: doc['title'],
+      file: doc['file'],
+      submission_date: doc['submission_date'],
+      task: doc['task'],
+    );
+  }
+}
+
+class Student {
+  int id;
+  String first_name;
+  String last_name;
+  String contact;
+  String bio_data;
+  String username;
+  String email;
+  Map<String, dynamic> educ_bg;
+
+  Student({
+    required this.id,
+    required this.first_name,
+    required this.last_name,
+    required this.contact,
+    required this.bio_data,
+    required this.username,
+    required this.email,
+    required this.educ_bg,
+  });
+
+  factory Student.fromMap(Map<String, dynamic> std) {
+    return Student(
+      id: std['id'], 
+      first_name: std['first_name'], 
+      last_name: std['last_name'], 
+      contact: std['contact'], 
+      bio_data: std['bio_data'], 
+      username: std['username'], 
+      email: std['email'], 
+      educ_bg: std['educ_bg'], 
+      );
   }
 }

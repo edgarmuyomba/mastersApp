@@ -19,8 +19,16 @@ class _loginState extends State<login> {
   bool isLoading = false;
 
   void handleStdNav(account) {
-    if (account['profile']['topic'] == '') Navigator.push(context, MaterialPageRoute(builder: (context) => createTopic(profile: account['profile'])));
-    else Navigator.push(context, MaterialPageRoute(builder: (context) => stdDashboard(profile: account['profile'])));
+    if (account['profile']['topic'] == '')
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => createTopic(profile: account['profile'])));
+    else
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => stdDashboard(profile: account['profile'])));
   }
 
   void logIn() {
@@ -37,21 +45,31 @@ class _loginState extends State<login> {
       });
       // display error message if login fails
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Invalid credentials')),
+        SnackBar(
+          backgroundColor: Colors.red,
+          content: Text('Invalid credentials')),
       );
     } else {
       setState(() {
         isLoading = false;
       });
-      if (_auth.checkStdRole(account['profile']['email'])) handleStdNav(account);
-      else if(_auth.checkSupRole(account['profile']['email'])) Navigator.push(context, MaterialPageRoute(builder: (context) => supDashboard(profile: account['profile'])));
+      if (_auth.checkStdRole(account['profile']['email']))
+        handleStdNav(account);
+      else if (_auth.checkSupRole(account['profile']['email']))
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    supDashboard(profile: account['profile'])));
       else {
         setState(() {
           isLoading = false;
         });
         ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Something went wrong')),
-      );
+          SnackBar(
+            backgroundColor: Colors.red,
+            content: Text('Something went wrong')),
+        );
       }
     }
   }
@@ -59,80 +77,112 @@ class _loginState extends State<login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              SizedBox(height: 400),
-              Text("Sign In"),
-              Form(
-                key: _formKey,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+                width: double.infinity,
+                decoration: BoxDecoration(
+                    color: Color.fromARGB(255, 38, 50, 56),
+                    borderRadius: BorderRadius.vertical(
+                        top: Radius.circular(0),
+                        bottom: Radius.elliptical(2000, 600))),
+                child: Column(
+                  children: [
+                    SizedBox(height: 200),
+                    Text(
+                      "Sign In",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 32),
+                    ),
+                    SizedBox(height: 30)
+                  ],
+                )),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Form(
+                  key: _formKey,
                   child: Column(
-                children: [
-                  TextFormField(
-                    controller: _email,
-                    decoration: InputDecoration(
-                      labelText: "Email",
-                      hintText: "Enter your email",
-                    ),
-                    validator: (value) {
-                      if (value!.isEmpty || !value.contains('@'))
-                        return "Please enter a valid email";
-                      else
-                        return null;
-                    },
-                  ),
-                  TextFormField(
-                    controller: _password,
-                    obscureText: true,
-                    decoration: InputDecoration(
-                      labelText: "Password",
-                      hintText: "Enter your password",
-                    ),
-                    validator: (value) {
-                      if (value!.isEmpty)
-                        return "Please enter your password";
-                      else
-                        return null;
-                    },
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      TextButton(
-                        onPressed: null,
-                        child: Text("Forgot Password?"),
+                      SizedBox(height: 40),
+                      TextFormField(
+                        controller: _email,
+                        decoration: InputDecoration(
+                            labelText: "Email",
+                            hintText: "Enter your email",
+                            border: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.black))),
+                        validator: (value) {
+                          if (value!.isEmpty || !value.contains('@'))
+                            return "Please enter a valid email";
+                          else
+                            return null;
+                        },
                       ),
-                    ],
-                  ),
-                  InkWell(
-                      onTap: () {
-                        if (_formKey.currentState!.validate()) logIn();
-                      },
-                      child: Card(
-                          child: Container(
-                              height: 70,
-                              width: 200,
-                              child: Center(
-                                  child: isLoading
-                                      ? CircularProgressIndicator(
-                                          strokeWidth: 2,
+                      SizedBox(height: 32.0),
+                      TextFormField(
+                        controller: _password,
+                        obscureText: true,
+                        decoration: InputDecoration(
+                            labelText: "Password",
+                            hintText: "Enter your password",
+                            border: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.black))),
+                        validator: (value) {
+                          if (value!.isEmpty)
+                            return "Please enter your password";
+                          else
+                            return null;
+                        },
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          TextButton(
+                            onPressed: null,
+                            child: Text(
+                              "Forgot Password?",
+                              style: TextStyle(
+                                color: Colors.green,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 20),
+                      InkWell(
+                        onTap: () {
+                          if (_formKey.currentState!.validate()) logIn();
+                        },
+                        child: Container(
+                            height: 70,
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              color: Color.fromARGB(255, 51, 75, 85),
+                              borderRadius: BorderRadius.all(Radius.circular(10))
+                            ),
+                            child: Center(
+                                child: isLoading
+                                    ? CircularProgressIndicator(
+                                        strokeWidth: 2,
+                                      )
+                                    : Text(
+                                        'Login',
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w600
                                         )
-                                      : Text(
-                                          'Login',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .bodyMedium,
-                                        ))),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(25)),
-                          ))),
-                          SizedBox(height: 200,)
-                ],
-              ))
-            ],
-          ),
+                                      ))),
+                      ),
+                      SizedBox(
+                        height: 200,
+                      )
+                    ],
+                  )),
+            )
+          ],
         ),
       ),
     );

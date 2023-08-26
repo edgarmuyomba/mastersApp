@@ -70,6 +70,12 @@ class AuthService {
       if (sup['id'] == id) return Supervisor.fromMap(sup);
     }
   }
+
+  static getStd(int id) {
+    for (var std in Students) {
+      if (std['id'] == id) return std;
+    }
+  }
 }
 
 class TopicService {
@@ -140,5 +146,15 @@ class FeedService {
       if (feed['task'] == id) feeds.add(Feed.fromMap(feed));
     }
     return feeds;
+  }
+}
+
+class DocService {
+  static List<Document> fetchDocs(Task task) {
+    List<Document> docs = [];
+    for (var doc in Documents) {
+      if (doc['task'] == task.id) docs.add(Document.fromMap(doc));
+    }
+    return docs;
   }
 }

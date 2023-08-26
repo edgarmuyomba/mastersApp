@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:masters_pms/src/models/db_controllers.dart';
 import 'package:masters_pms/src/models/models.dart';
 import 'package:masters_pms/src/models/widgets.dart';
+import 'package:masters_pms/src/presentation/student/submissions.dart';
 
 class makeSubmission extends StatefulWidget {
   final Task task;
@@ -32,7 +33,7 @@ class _makeSubmissionState extends State<makeSubmission>
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Container(
-        height: 500,
+        height: 400,
         decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.all(Radius.circular(25))),
@@ -96,7 +97,7 @@ class _makeSubmissionState extends State<makeSubmission>
                           children: [
                             TextFormField(
                               controller: _comment,
-                              maxLines: 10,
+                              maxLines: 5,
                               decoration: InputDecoration(
                                   labelText: "Comment",
                                   hintText: "Write a comment",
@@ -111,7 +112,7 @@ class _makeSubmissionState extends State<makeSubmission>
                             ),
                             SizedBox(height: 10.0),
                             InkWell(
-                                onTap: null,
+                                onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => submissions(task: widget.task))),
                                 child: Container(
                                     alignment: Alignment.center,
                                     width: double.infinity,
