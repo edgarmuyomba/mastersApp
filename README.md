@@ -36,5 +36,5 @@ An application used to supervise students undertaking a masters degree research.
 2. [Table Calendar](https://pub.dev/packages/table_calendar)
 
 ## Contributors
-@BirimumaasoRogers
-@allanalmax
+[@BirimumaasoRogers](https://github.com/BirimumaasoRogers)
+[@allanalmax](https://github.com/allanalmax)
